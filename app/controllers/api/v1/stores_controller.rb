@@ -11,6 +11,7 @@ class Api::V1::StoresController < ApplicationController
 
     def create 
         @store = Store.new(store_params)
+        @user = User.find_by(id: params[:user_id])
         if @store.save
             render json: @store, include: :items, status: 200
         else
