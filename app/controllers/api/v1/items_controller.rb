@@ -11,6 +11,7 @@ class Api:V1::ItemsController < ApplicationController
 
     def create 
         @item = Item.new(item_params)
+        @store = Store.find_by(id: params[:store_id])
         if @item.save
             render json: @item, status: 200
         else
